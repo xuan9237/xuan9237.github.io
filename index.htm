@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>U1033049</title>
+    <link rel="icon" href="images/home.png" type="images/png">
+</head>
+
+<style>
+    #home {
+        background-image: url(images/BG.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    body {
+        background-image: url(images/BG2.jpg);
+        background-size: cover;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .transparent-bg {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    #big {
+        font-size: 20px;
+    }
+
+    /*關於我*/
+    #myphoto {
+        width: 360px;
+        height: 455px;
+        object-fit: cover;
+    }
+
+    #clip {
+        margin-top: -930px;
+        margin-left: 270px;
+    }
+
+    #mytable th {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /*我的家人*/
+    .custom-card-img {
+        height: 350px;
+        object-fit: cover;
+    }
+
+    .fade-in {
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+
+    .fade-in.show {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /*作品集*/
+    #port.carousel {
+        max-height: 500px;
+    }
+
+    /*教育背景*/
+    .custom-rounded {
+        border-radius: 5%;
+    }
+
+    /*專業技能*/
+    .progress-bar {
+        transition: width 0.5s ease;
+    }
+
+</style>
+
+<script>
+    /*我的家人*/
+    function handleIntersection(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCards(); // 滾動到"我的家人"部分時觸發一張一張出現的效果
+                observer.unobserve(entry.target);
+            }
+        });
+    }
+
+    function animateCards() {
+        const cards = document.querySelectorAll('.fade-in');
+        let delay = 0;
+        cards.forEach(function(card) {
+            setTimeout(function() {
+                card.classList.add('show');
+            }, delay);
+            delay += 400; // 延遲每張卡片的顯示時間
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const section = document.querySelector('#menu2'); // 修改為"我的家人"部分的ID
+        const options = {
+            rootMargin: '0px',
+            threshold: 0.5
+        };
+        const observer = new IntersectionObserver(handleIntersection, options);
+        observer.observe(section);
+    });
+
+    /*教育背景*/
+    function showPrimary() {
+        document.querySelector('.primary').style.display = "block";
+        document.querySelector('.junior').style.display = "none";
+        document.querySelector('.senior').style.display = "none";
+        document.querySelector('.rightnow').style.display = "none";
+    }
+
+    function showJunior() {
+        document.querySelector('.primary').style.display = "none";
+        document.querySelector('.junior').style.display = "block";
+        document.querySelector('.senior').style.display = "none";
+        document.querySelector('.rightnow').style.display = "none";
+    }
+
+    function showSenior() {
+        document.querySelector('.primary').style.display = "none";
+        document.querySelector('.junior').style.display = "none";
+        document.querySelector('.senior').style.display = "block";
+        document.querySelector('.rightnow').style.display = "none";
+    }
+
+    function showRightNow() {
+        document.querySelector('.primary').style.display = "none";
+        document.querySelector('.junior').style.display = "none";
+        document.querySelector('.senior').style.display = "none";
+        document.querySelector('.rightnow').style.display = "block";
+    }
+
+    /*專業技能*/
+    function animateProgressBar(progressBar, targetWidth) {
+        var currentWidth = 0;
+        var intervalId = setInterval(frame, 10);
+        function frame() {
+            progressBar.style.width = currentWidth + "%";
+            progressBar.innerText = currentWidth + "%";
+            if (currentWidth >= targetWidth) {
+                clearInterval(intervalId);
+                progressBar.style.width = targetWidth + "%";
+                progressBar.innerText = targetWidth + "%";
+            }else {
+                currentWidth++;
+            }
+        }
+    }
+
+    function showfup() {
+        document.querySelector('.freshmanUp').style.display = "block";
+        document.querySelector('.freshmanDown').style.display = "none";
+        document.querySelector('.sophoUp').style.display = "none";
+        document.querySelector('.sophoDown').style.display = "none";
+
+        var progressBar = document.getElementById('progress1');
+        animateProgressBar(progressBar, 70);
+        var progressBar = document.getElementById('progress2');
+        animateProgressBar(progressBar, 40);
+    }
+
+    function showfdown() {
+        document.querySelector('.freshmanUp').style.display = "none";
+        document.querySelector('.freshmanDown').style.display = "block";
+        document.querySelector('.sophoUp').style.display = "none";
+        document.querySelector('.sophoDown').style.display = "none";
+
+        var progressBar = document.getElementById('progress3');
+        animateProgressBar(progressBar, 60);
+        var progressBar = document.getElementById('progress4');
+        animateProgressBar(progressBar, 90);
+    }
+
+    function showsup() {
+        document.querySelector('.freshmanUp').style.display = "none";
+        document.querySelector('.freshmanDown').style.display = "none";
+        document.querySelector('.sophoUp').style.display = "block";
+        document.querySelector('.sophoDown').style.display = "none";
+
+        var progressBar = document.getElementById('progress5');
+        animateProgressBar(progressBar, 40);
+        var progressBar = document.getElementById('progress6');
+        animateProgressBar(progressBar, 70);
+    }
+
+    function showsdown() {
+        document.querySelector('.freshmanUp').style.display = "none";
+        document.querySelector('.freshmanDown').style.display = "none";
+        document.querySelector('.sophoUp').style.display = "none";
+        document.querySelector('.sophoDown').style.display = "block";
+
+        var progressBar = document.getElementById('progress7');
+        animateProgressBar(progressBar, 80);
+        var progressBar = document.getElementById('progress8');
+        animateProgressBar(progressBar, 85);
+        var progressBar = document.getElementById('progress9');
+        animateProgressBar(progressBar, 20);
+    }
+
+    /*專案作品*/
+    function showc() {
+        document.querySelector('.C').style.display = "block";
+        document.querySelector('.BCB').style.display = "none";
+        document.querySelector('.PHP').style.display = "none";
+    }
+
+    function showbcb() {
+        document.querySelector('.C').style.display = "none";
+        document.querySelector('.BCB').style.display = "block";
+        document.querySelector('.PHP').style.display = "none";
+    }
+
+    function showphp() {
+        document.querySelector('.C').style.display = "none";
+        document.querySelector('.BCB').style.display = "none";
+        document.querySelector('.PHP').style.display = "block";
+    }
+</script>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="50">
+    <div>
+        <!-- Scrollspy Navigation -->
+        <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="images/home.png" class="me-3">佳軒的窩</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#n1">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="n1">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#menu1">關於我</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#menu2" onclick="animateCards();">我的家人</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#menu3">作品集</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#menu4">教育背景</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#menu5">專業技能</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#menu6">專案作品</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#menu7">聯絡資訊</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Tab panes -->
+        <!-- <div class="tab-content"> -->
+        <div id="home" class="container-fluid" style="padding:0px 20px;">
+            <div class="container-fluid extended-bg" style="padding-top: 57px;">
+                <div class="p-5 text-white text-center transparent-bg">
+                    <h1>佳軒的窩</h1>
+                    <p style="font-family: 'Courier New', sans-serif;">Welcome to my personal webpage!!</p> 
+                </div>
+            </div>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <br>
+                        <h2>歡迎來到我的個人網站！</h2>
+                        <br>
+                        <br>
+                        <p id="big">我是李佳軒，這裡是我的個人網站。</p>
+                        <p id="big">在這裡，您可以了解更多關於我的事</p>
+                        <p id="big">比如：我的興趣、我的家人及我的專業知識等</p>
+                        <p id="big">請隨意瀏覽我的網站，希望您能找到有趣內容</p>
+                        <p id="big">若想了解更多，也歡迎追蹤我的IG或FB</p>
+                        <p id="big">記得要先登入IG帳號才可以看到喔！</p><br><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu1" class="container mt-5" style="padding:100px 20px;">
+            <h2 class="font-effect-shadow-multiple" style="font-weight: bold; color: #00364D;">關於我</h2>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="rounded img-thumbnail custom-thumbnail" id="myphoto" src="images/我.jpg" alt="佳軒的大頭照">
+                    <img src="images/clip.png" id="clip" alt="我是迴紋針">
+                </div>
+                <div class="col-md-8 text-left" id="big">
+                    <table class="table table-bordered" id="mytable">
+                    <tr class="table-dark">
+                        <th colspan="2">關於我</th>
+                    </tr>
+                    <tr class="table-light">
+                        <th>姓名</th>
+                        <td>李佳軒</td>
+                    </tr>
+                    <tr class="table-light">
+                        <th>就讀學校</th>
+                        <td>國立聯合大學</td>
+                    </tr>
+                    <tr class="table-light">
+                        <th>主修專業</th>
+                        <td>資訊管理</td>
+                    </tr>
+                    <tr class="table-light">
+                        <th>興趣</th>
+                        <td>繪畫、做甜點、吸貓</td>
+                    </tr>
+                    <tr class="table-light">
+                        <th>特色</th>
+                        <td>
+                            被遺傳到巨人基因，而意外長成173公分的女子<br>
+                            身材方面，則是不小心基因突變，變成了一個吃不胖的骷髏人
+                        </td>
+                    </tr>
+                    <tr class="table-light">
+                        <th>目標</th>
+                        <td>當一個有錢的幸福人類</td>
+                    </tr>
+                    <tr class="table-light">
+                        <th>座右銘</th>
+                        <td>船到橋頭自然直</td>
+                    </tr>
+                    <tr class="table-light">
+                        <th>聯絡方式</th>
+                        <td>
+                            <a href="https://www.facebook.com/profile.php?id=100004492001776&mibextid=ZbWKwL">
+                                <img src="images/facebook.png" alt="FB">
+                            </a>
+                            <a href="https://instagram.com/s.ljxuan__tuin77?igshid=MmIzYWVlNDQ5Yg==">
+                                <img src="images/instagram.png" alt="IG">
+                            </a>
+                        </td>
+                    </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="menu2" class="container-fluid" style="padding:100px 20px;">
+            <br>
+            <h2 class="font-effect-shadow-multiple" style="font-weight: bold; color: #00364D;">我的家人</h2>
+            <main>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="card fade-in" id="card1">
+                            <img class="card-img-top img-thumbnail custom-card-img" src="images/媽媽.jpg" alt="Card image" style="width:100%">
+                            <div class="card-body">
+                                <h4 class="card-title">媽媽</h4>
+                                <p class="card-text">
+                                    這是我的媽媽<br>
+                                    是支撐起我們整個家的支柱<br>
+                                    也是個越老越美的人<br>
+                                    雖然她很喜歡碎碎念<br>
+                                    但我還是最喜歡她
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card fade-in" id="card2">
+                            <img class="card-img-top img-thumbnail custom-card-img" src="images/姊姊.jpg" alt="Card image" style="width:100%">
+                            <div class="card-body">
+                                <h4 class="card-title">姐姐</h4>
+                                <p class="card-text">
+                                    這是我的姐姐<br>
+                                    是我們家的顏值擔當<br>
+                                    也是個很善良的人<br>
+                                    但善良到有時候覺得她很傻<br>
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card fade-in" id="card3">
+                            <img class="card-img-top img-thumbnail custom-card-img" src="images/哥哥.jpg" alt="Card image" style="width:100%">
+                            <div class="card-body">
+                                <h4 class="card-title">哥哥</h4>
+                                <p class="card-text">
+                                    這是我的哥哥<br>
+                                    是我們家的聰明擔當<br>
+                                    也是個189的大巨人<br>
+                                    雖然很喜歡嘴砲我<br>
+                                    但是關鍵時刻他依然很可靠<br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card fade-in" id="card4">
+                            <img class="card-img-top img-thumbnail custom-card-img" src="images/瓜張.jpg" alt="Card image" style="width:100%">
+                            <div class="card-body">
+                                <h4 class="card-title">瓜張</h4>
+                                <p class="card-text">
+                                    這是我家的貓<br>
+                                    牠叫做瓜張<br>
+                                    是一隻有粉色肉球的虎斑貓<br>
+                                    也是個又懶惰又貪吃的大肥貓<br>
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>    
+        <div id="menu3" class="container-fluid" style="padding:100px 20px;">
+            <br>
+            <h2 class="font-effect-shadow-multiple" style="font-weight: bold; color: #00364D;">作品集</h2>
+            <div class="portfolio text-center" id="big">
+                <div class="container">
+                    <p style="font-weight: bold;">我時常在IG分享自己的畫作，同時也喜歡在家製作甜點</p>
+                    <p style="font-weight: bold;">以下是我累積的一小部分作品</p>
+                    <div id="port" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                        <!-- Indicators/dots -->
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#port" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#port" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#port" data-bs-slide-to="2"></button>
+                            <button type="button" data-bs-target="#port" data-bs-slide-to="3"></button>
+                        </div>
+                        <!-- The slideshow/carousel -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-md-6 offset-md-3">
+                                    <img src="images/畢業.jpg" alt="第一張" class="d-block img-fluid custom-rounded">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-6 offset-md-3">
+                                    <img src="images/恐龍.jpg" alt="第二張" class="d-block img-fluid custom-rounded">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-6 offset-md-3">
+                                    <img src="images/千層.jpg" alt="第三張" class="d-block img-fluid custom-rounded">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-6 offset-md-3">
+                                    <img src="images/大福.jpg" alt="第四張" class="d-block img-fluid custom-rounded">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <!-- Left and right controls/icons -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#port" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#port" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu4" class="container-fluid" style="padding:100px 20px;">
+            <br>
+            <h2  class="font-effect-shadow-multiple" style="font-weight: bold; color: #00364D;">教育背景</h2>
+            <div class="educate text-left" id="big">
+                <div class="container">
+                    <div class="primary">
+                        <div class="row" style="margin-left: 150px;">
+                            <div class="col-md-6">
+                                <br>
+                                <img class="img-fluid custom-rounded" src="images/國小.jpg" alt="我的國小">
+                            </div>
+                            <div class="col-md-6">
+                                <br>
+                                <h3 style="font-weight: bold;">國小：復興國小（位於台南市）</h3>
+                                <p style="font-weight: bold;">在六年級時曾擔任學校的糾察隊</p>
+                                <p style="font-weight: bold;">負責登記早自習及午休時間違規的學生</p>
+                                <p style="font-weight: bold;">以及給各班級的整潔及秩序打分數</p>
+                                <br>
+                                <p style="font-weight: bold;">在這個過程中</p>
+                                <p style="font-weight: bold;">學到了負責任</p>
+                                <p style="font-weight: bold;">以及不帶任何私心的公事公辦</p>
+                                <p style="font-weight: bold;">並保持公平、公正的心</p>
+                                <p style="font-weight: bold;">去完成糾察隊該有的職責</p>
+                                <br>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                <div class="container">
+                    <div class="junior" style="display: none;">
+                        <div class="row" style="margin-left: 100px;">
+                            <div class="col-md-6">
+                                <br>
+                                <img class="img-fluid custom-rounded" src="images/國中.jpg" alt="國中畢冊">
+                            </div>
+                            <div class="col-md-6">
+                                <br>
+                                <h3 style="font-weight: bold;">國中：永仁高中附設國中部（位於台南市）</h3>
+                                <p style="font-weight: bold;">曾擔任學藝股長、衛生股長及英文小老師</p>
+                                <p style="font-weight: bold;">負責布置班上的布告欄及活動海報</p>
+                                <p style="font-weight: bold;">和監督班上衛生的整潔</p>
+                                <p style="font-weight: bold;">另外，畢業前擔任製作畢冊的組長</p>
+                                <br>
+                                <p style="font-weight: bold;">在這個過程中</p>
+                                <p style="font-weight: bold;">學到了不自滿</p>
+                                <p style="font-weight: bold;">不因在自己擅長的領域</p>
+                                <p style="font-weight: bold;">而感到驕傲、自大</p>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="senior" style="display: none;">
+                        <div class="row" style="margin-left: 150px;">
+                            <div class="col-md-6">
+                                <br>
+                                <img class="img-fluid custom-rounded" src="images/高中.jpg" alt="高中畢冊">
+                            </div>
+                            <div class="col-md-6">
+                                <br>
+                                <h3 style="font-weight: bold;">高中：聖功女中（位於台南市）</h3>
+                                <p style="font-weight: bold;">再次在畢業前擔任製作畢冊的組長</p>
+                                <p style="font-weight: bold;">負責與老師聯絡及廠商校正</p>
+                                <p style="font-weight: bold;">另外，也負責舉辦整個班級的謝師宴</p>
+                                <br>
+                                <p style="font-weight: bold;">在這個過程中</p>
+                                <p style="font-weight: bold;">學到了領導的能力</p>
+                                <p style="font-weight: bold;">因為具有兩次經驗</p>
+                                <p style="font-weight: bold;">所以較得心應手</p>
+                                <p style="font-weight: bold;">也能適時的提醒組員該注意的事項</p>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="rightnow" style="display: none;">
+                        <div class="row" style="margin-left: 100px;">
+                            <div class="col-md-6">
+                                <br>
+                                <div id="demo" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                                    <!-- Indicators/dots -->
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                                        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                                        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                                    </div>
+                                    <!-- The slideshow/carousel -->
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="images/1.jpg" alt="第一張" class="d-block custom-rounded" style="width:100%">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/2.jpg" alt="第二張" class="d-block custom-rounded" style="width:100%">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/3.jpg" alt="第三張" class="d-block custom-rounded" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <!-- Left and right controls/icons -->
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon"></span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <br>
+                                <h3 style="font-weight: bold;">大學：聯合大學資管系（位於苗栗縣）</h3>
+                                <p style="font-weight: bold;">在二上時期的管理學這堂課中</p>
+                                <p style="font-weight: bold;">曾與同學一同訪問過葡萄王的資訊組組長</p>
+                                <p style="font-weight: bold;">以及第一次嘗試做企劃書</p>
+                                <p style="font-weight: bold;">並與葡萄王的聯絡人一來一回的溝通和修改</p>
+                                <br>
+                                <p style="font-weight: bold;">在這個過程中</p>
+                                <p style="font-weight: bold;">學到了做企劃書時，該注意的小細節</p>
+                                <p style="font-weight: bold;">以及訪談前該要有的準備</p>
+                                <p style="font-weight: bold;">另外，也注意到了自身的不足，並更加努力增強自己</p>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bt text-center">
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showPrimary()">國小</button>
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showJunior()">國中</button>
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showSenior()">高中</button>
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showRightNow()">現在</button>
+                </div>
+            </div>
+        </div>
+        <div id="menu5" class="container-fluid" style="padding:100px 20px;">
+            <br>
+            <h2  class="font-effect-shadow-multiple" style="font-weight: bold; color: #00364D;">專業技能</h2>
+            <br>
+            <div class="skill text-center" id="big">
+                <div class="freshmanUp">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6" style="text-align: left;">
+                                <h3 class="offset-md-3" style="font-weight: bold;">大一上</h3>
+                                <p class="offset-md-3" style="font-weight: bold;">
+                                在程式設計(一)中，學習到了一些基礎的C++語法<br>
+                                並依靠這些知識，完成了多項溫敏淦老師派的作業<br>
+                                例如：踩地雷、猜AB遊戲等，以及期末自己想做的<br>
+                                專題-數字華榮道<br>
+                                <br>
+                                在計算機概論中，則是學到了一些關於電腦方面，<br>
+                                各個基礎理論和演算法，並為之後的課程打好了基礎
+                                </p>
+                            </div>
+                            <div class="col-md-6" style="text-align: left;">
+                                <br>
+                                <h5 style="font-weight: bold;">C++</h5>
+                                <div class="progress" style="height:30px">
+                                    <div id="progress1" class="progress-bar bg-info" style="width:70%; height:30px;">70%</div>
+                                </div>
+                                <br>
+                                <h5 style="font-weight: bold;">計算機概論</h5>
+                                <div class="progress" style="height:30px">
+                                    <div id="progress2" class="progress-bar bg-info" style="width:40%; height:30px;">40%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br><br>
+                    </div>
+                </div>    
+                <div class="freshmanDown" style="display: none;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6" style="text-align: left;">
+                                <h3 class="offset-md-3" style="font-weight: bold;">大一下</h3>
+                                <p class="offset-md-3" style="font-weight: bold;">
+                                    在程式設計(二)中，學習到了一些基礎的BCB語法<br>
+                                    並依靠這些知識，完成了多項溫敏淦老師派的作業<br>
+                                    例如：踩地雷、打磚塊等，以及期末自己想做的專<br>
+                                    題-壞壞冰淇淋，是一個類似小精靈的遊戲<br>
+                                    <br>
+                                    在商資通中，則是學習了一些通訊協定及簡單的指<br>
+                                    令，並在未來的網規及網管更加深入
+                                </p>
+                            </div>
+                            <div class="col-md-6" style="text-align: left;">
+                                <br>
+                                <h5 style="font-weight: bold;">BCB</h5>
+                                <div class="progress" style="height:30px">
+                                    <div id="progress3" class="progress-bar bg-info" style="width:0%; height:30px;">60%</div>
+                                </div>
+                                <br>
+                                <h5 style="font-weight: bold;">商資通</h5>
+                                <div class="progress" style="height:30px">
+                                    <div id="progress4" class="progress-bar bg-info" style="width:0%; height:30px;">90%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br><br>
+                    </div>
+                </div>
+                <div class="sophoUp" style="display: none;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6" style="text-align: left;">
+                                <h3 class="offset-md-3" style="font-weight: bold;">大二上</h3>
+                                <p class="offset-md-3" style="font-weight: bold;">
+                                    在資料結構中，學習到了一些理論方面的知識，並<br>
+                                    依靠這些知識，完成了多項溫敏淦老師派的作業，<br>
+                                    例如：聰明計算機等，是個不止加、減、乘、除的<br>
+                                    計算機
+                                    <br>
+                                    在資料庫系統管理中，則是學習到了MySQL的基本<br>
+                                    語法，以及繪製ER-Model和正規化，為二下的資料<br>
+                                    庫程式設計打下了基礎
+                                </p>
+                            </div>
+                            <div class="col-md-6" style="text-align: left;">
+                                <br>
+                                <h5 style="font-weight: bold;">資料結構</h5>
+                                <div class="progress" style="height:30px">
+                                    <div id="progress5" class="progress-bar bg-info" style="width:0%; height:30px;">40%</div>
+                                </div>
+                                <br>
+                                <h5 style="font-weight: bold;">MySQL</h5>
+                                <div class="progress" style="height:30px">
+                                    <div id="progress6" class="progress-bar bg-info" style="width:0%; height:30px;">70%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br><br>
+                    </div>
+                </div>
+                <div class="sophoDown" style="display: none;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6" style="text-align: left;">
+                                <h3 class="offset-md-3" style="font-weight: bold;">大二下</h3>
+                                <p class="offset-md-3" style="font-weight: bold;">
+                                    在前端網頁中，學習到了HTML、CSS、Bootstrap<br>
+                                    的應用，讓我在製作網頁上，不但具備基礎能力，<br>
+                                    還有美編能力，也讓我在資料庫程式設計中，所製<br>
+                                    作的網頁具有較好的排版及樣貌<br>
+                                    <br>
+                                    在資料庫程式設計中，則學習到了PHP的應用，如何<br>
+                                    做出一個完整且有用的資料庫系統，例如：「設備維修系統」
+                                </p>
+                            </div>
+                            <div class="col-md-6" style="text-align: left;">
+                                <h5 style="font-weight: bold;">HTML/CSS/Bootstrap</h5>
+                                <div class="progress" style="height:30px">
+                                    <div id="progress7" class="progress-bar bg-info" style="width:0%; height:30px;">80%</div>
+                                </div>
+                                <br>
+                                <h5 style="font-weight: bold;">PHP</h5>
+                                <div class="progress" style="height:30px">
+                                    <div id="progress8" class="progress-bar bg-info" style="width:0%; height:30px;">85%</div>
+                                </div>
+                                <br>
+                                <h5 style="font-weight: bold;">JavaScript</h5>
+                                <div class="progress" style="height:30px">
+                                    <div id="progress9" class="progress-bar bg-info" style="width:0%; height:30px;">20%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+                    </div>
+                </div>
+                <div class="but text-center">
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showfup()">一上</button>
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showfdown()">一下</button>
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showsup()">二上</button>
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showsdown()">二下</button>
+                </div>
+            </div>
+        </div>
+        <div id="menu6" class="container-fluid" style="padding:100px 20px;">
+            <br>
+            <h2  class="font-effect-shadow-multiple" style="font-weight: bold; color: #00364D;">專案作品</h2>
+            <br>
+            <div class="project text-center" id="big">
+                <p style="font-weight: bold;">以下是我在專業技能裡所提到的專題，分別是：</p>
+                <div class="C" style="display: block;">
+                    <p style="font-weight: bold;">1. 大一上使用C++所做的「<span style="color: #369661;">數字華榮道</span>」</p>
+                    <iframe width="672" height="378" src="https://www.youtube.com/embed/__OXVY9tgy4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class="BCB" style="display: none;">
+                    <p style="font-weight: bold;">2. 大一下使用BCB所做的「<span style="color: #369661;">壞壞冰淇淋</span>」</p>
+                    <iframe width="672" height="378" src="https://www.youtube.com/embed/6dfjZ3Aqxa8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class="PHP" style="display: none;">
+                    <p style="font-weight: bold;">3. 大二下使用PHP所做的「<span style="color: #369661;">設備維修系統</span>」</p>
+                    <iframe width="672" height="378" src="https://www.youtube.com/embed/vjEGz4wIrSc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class="butn text-center">
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showc()">C++</button>
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showbcb()">BCB</button>
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showphp()">PHP</button>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5 p-5 bg-dark text-white text-center">
+            <div id="menu7" class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="images/facebook.png" alt="FB"><span style="margin-left: 20px;">李佳軒</span>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/instagram.png" alt="IG"><span style="margin-left: 20px;">s.ljxuan__tuin77</span>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/telephone.png" alt="PHONE"><span style="margin-left: 20px;">0986-611-379</span>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/email.png" alt="EMAIL"><span style="margin-left: 20px;">qaz20030307@gmail.com</span>
+                    </div>
+                </div>
+                <br>
+                <p class="text-center" style="margin-bottom: -45px;"><a href="#" style="color: aliceblue; text-decoration: underline;">Back to top</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
