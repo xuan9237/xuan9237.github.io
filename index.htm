@@ -17,6 +17,10 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
+        height: 100vh;
+        display: flex;            /* 新增 */
+        flex-direction: column;   /* 新增 */
+        justify-content: center;
     }
 
     body {
@@ -123,6 +127,25 @@
         observer.observe(section);
     });
 
+    /*我的經歷*/
+    function showIndustry() {
+        document.querySelector('.industry').style.display = "block";
+        document.querySelector('.topic').style.display = "none";
+        document.querySelector('.other').style.display = "none";
+    }
+
+    function showTopic() {
+        document.querySelector('.industry').style.display = "none";
+        document.querySelector('.topic').style.display = "block";
+        document.querySelector('.other').style.display = "none";
+    }
+
+    function showOther() {
+        document.querySelector('.industry').style.display = "none";
+        document.querySelector('.topic').style.display = "none";
+        document.querySelector('.other').style.display = "block";
+    }
+
     /*教育背景*/
     function showPrimary() {
         document.querySelector('.primary').style.display = "block";
@@ -174,6 +197,9 @@
         document.querySelector('.freshmanDown').style.display = "none";
         document.querySelector('.sophoUp').style.display = "none";
         document.querySelector('.sophoDown').style.display = "none";
+        document.querySelector('.juniorUp').style.display = "none";
+        document.querySelector('.juniorDown').style.display = "none";
+        document.querySelector('.seniorUp').style.display = "none";
 
         var progressBar = document.getElementById('progress1');
         animateProgressBar(progressBar, 70);
@@ -186,6 +212,9 @@
         document.querySelector('.freshmanDown').style.display = "block";
         document.querySelector('.sophoUp').style.display = "none";
         document.querySelector('.sophoDown').style.display = "none";
+        document.querySelector('.juniorUp').style.display = "none";
+        document.querySelector('.juniorDown').style.display = "none";
+        document.querySelector('.seniorUp').style.display = "none";
 
         var progressBar = document.getElementById('progress3');
         animateProgressBar(progressBar, 60);
@@ -198,6 +227,9 @@
         document.querySelector('.freshmanDown').style.display = "none";
         document.querySelector('.sophoUp').style.display = "block";
         document.querySelector('.sophoDown').style.display = "none";
+        document.querySelector('.juniorUp').style.display = "none";
+        document.querySelector('.juniorDown').style.display = "none";
+        document.querySelector('.seniorUp').style.display = "none";
 
         var progressBar = document.getElementById('progress5');
         animateProgressBar(progressBar, 40);
@@ -210,6 +242,9 @@
         document.querySelector('.freshmanDown').style.display = "none";
         document.querySelector('.sophoUp').style.display = "none";
         document.querySelector('.sophoDown').style.display = "block";
+        document.querySelector('.juniorUp').style.display = "none";
+        document.querySelector('.juniorDown').style.display = "none";
+        document.querySelector('.seniorUp').style.display = "none";
 
         var progressBar = document.getElementById('progress7');
         animateProgressBar(progressBar, 80);
@@ -219,23 +254,80 @@
         animateProgressBar(progressBar, 20);
     }
 
+    function showjup() {
+        document.querySelector('.freshmanUp').style.display = "none";
+        document.querySelector('.freshmanDown').style.display = "none";
+        document.querySelector('.sophoUp').style.display = "none";
+        document.querySelector('.sophoDown').style.display = "none";
+        document.querySelector('.juniorUp').style.display = "block";
+        document.querySelector('.juniorDown').style.display = "none";
+        document.querySelector('.seniorUp').style.display = "none";
+
+        var progressBar = document.getElementById('progress10');
+        animateProgressBar(progressBar, 85);
+        var progressBar = document.getElementById('progress11');
+        animateProgressBar(progressBar, 25);
+    }
+
+    function showjdown() {
+        document.querySelector('.freshmanUp').style.display = "none";
+        document.querySelector('.freshmanDown').style.display = "none";
+        document.querySelector('.sophoUp').style.display = "none";
+        document.querySelector('.sophoDown').style.display = "none";
+        document.querySelector('.juniorUp').style.display = "none";
+        document.querySelector('.juniorDown').style.display = "block";
+        document.querySelector('.seniorUp').style.display = "none";
+
+        var progressBar = document.getElementById('progress12');
+        animateProgressBar(progressBar, 95);
+        var progressBar = document.getElementById('progress13');
+        animateProgressBar(progressBar, 75);
+        var progressBar = document.getElementById('progress14');
+        animateProgressBar(progressBar, 60);
+    }
+
+    function showsenup() {
+        document.querySelector('.freshmanUp').style.display = "none";
+        document.querySelector('.freshmanDown').style.display = "none";
+        document.querySelector('.sophoUp').style.display = "none";
+        document.querySelector('.sophoDown').style.display = "none";
+        document.querySelector('.juniorUp').style.display = "none";
+        document.querySelector('.juniorDown').style.display = "none";
+        document.querySelector('.seniorUp').style.display = "block";
+
+        var progressBar = document.getElementById('progress15');
+        animateProgressBar(progressBar, 70);
+        var progressBar = document.getElementById('progress16');
+        animateProgressBar(progressBar, 65);
+    }
+
     /*專案作品*/
     function showc() {
         document.querySelector('.C').style.display = "block";
         document.querySelector('.BCB').style.display = "none";
         document.querySelector('.PHP').style.display = "none";
+        document.querySelector('.thesis').style.display = "none";
     }
 
     function showbcb() {
         document.querySelector('.C').style.display = "none";
         document.querySelector('.BCB').style.display = "block";
         document.querySelector('.PHP').style.display = "none";
+        document.querySelector('.thesis').style.display = "none";
     }
 
     function showphp() {
         document.querySelector('.C').style.display = "none";
         document.querySelector('.BCB').style.display = "none";
         document.querySelector('.PHP').style.display = "block";
+        document.querySelector('.thesis').style.display = "none";
+    }
+
+    function showthesis() {
+        document.querySelector('.C').style.display = "none";
+        document.querySelector('.BCB').style.display = "none";
+        document.querySelector('.PHP').style.display = "none";
+        document.querySelector('.thesis').style.display = "block";
     }
 </script>
 
@@ -260,7 +352,7 @@
                             <a class="nav-link" href="#menu2" onclick="animateCards();">我的家人</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#menu3">作品集</a>
+                            <a class="nav-link" href="#menu3">我的經歷</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#menu4">教育背景</a>
@@ -431,7 +523,7 @@
                 </div>
             </main>
         </div>    
-        <div id="menu3" class="container-fluid" style="padding:100px 20px;">
+        <!-- <div id="menu3" class="container-fluid" style="padding:100px 20px;">
             <br>
             <h2 class="font-effect-shadow-multiple" style="font-weight: bold; color: #00364D;">作品集</h2>
             <div class="portfolio text-center" id="big">
@@ -439,15 +531,15 @@
                     <p style="font-weight: bold;">我時常在IG分享自己的畫作，同時也喜歡在家製作甜點</p>
                     <p style="font-weight: bold;">以下是我累積的一小部分作品</p>
                     <div id="port" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-                        <!-- Indicators/dots -->
-                        <div class="carousel-indicators">
+                        !-- Indicators/dots -->
+                        <!-- <div class="carousel-indicators">
                             <button type="button" data-bs-target="#port" data-bs-slide-to="0" class="active"></button>
                             <button type="button" data-bs-target="#port" data-bs-slide-to="1"></button>
                             <button type="button" data-bs-target="#port" data-bs-slide-to="2"></button>
                             <button type="button" data-bs-target="#port" data-bs-slide-to="3"></button>
-                        </div>
+                        </div> -->
                         <!-- The slideshow/carousel -->
-                        <div class="carousel-inner">
+                        <!-- <div class="carousel-inner">
                             <div class="carousel-item active">
                             <div class="row">
                                 <div class="col-md-6 offset-md-3">
@@ -477,14 +569,172 @@
                             </div>
                             </div>
                         </div>
-                        <!-- Left and right controls/icons -->
-                        <button class="carousel-control-prev" type="button" data-bs-target="#port" data-bs-slide="prev">
+                        !-- Left and right controls/icons -->
+                        <!-- <button class="carousel-control-prev" type="button" data-bs-target="#port" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon"></span>
                         </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#port" data-bs-slide="next">
                             <span class="carousel-control-next-icon"></span>
                         </button>
                     </div>
+                </div>
+            </div>
+        </div>  -->
+        <div id="menu3" class="container-fluid" style="padding:100px 20px;">
+            <br>
+            <h2 class="font-effect-shadow-multiple" style="font-weight: bold; color: #00364D;">我的經歷</h2>
+            <div class="portfolio text-left" id="big">
+                <div class="container">
+                    <div class="industry">
+                        <div class="row" style="margin-left: 100px;">
+                            <div class="col-md-6">
+                                <br>
+                                <div id="demo" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                                    <!-- Indicators/dots -->
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                                        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                                        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                                    </div>
+                                    <!-- The slideshow/carousel -->
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="images/4.jpg" alt="第一張" class="d-block custom-rounded" style="width:100%; height: 435px;">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/5.jpg" alt="第二張" class="d-block custom-rounded" style="width:100%; height: 435px;">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/6.jpg" alt="第三張" class="d-block custom-rounded" style="width:100%; height: 435px;">
+                                        </div>
+                                    </div>
+                                    <!-- Left and right controls/icons -->
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon"></span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <br>
+                                <h3 style="font-weight: bold; color: rgb(179, 10, 10);">產學人才扎根分項計畫(團體組)-第三名</h3>
+                                <p style="font-weight: bold;">主要開發粉末冶金燒結整合系統</p>
+                                <p style="font-weight: bold;">負責：網頁與資料庫設計</p>
+                                <p style="font-weight: bold;">1. 即時儲存MQTT資料至資料庫</p>
+                                <p style="font-weight: bold;">2. 利用表格和圖表清楚顯示於電腦及手機上</p>
+                                <h3 style="font-weight: bold; color: rgb(179, 10, 10);">照護系統(護理站)</h3>
+                                <p style="font-weight: bold;">合作對象：華星科技公司</p>
+                                <p style="font-weight: bold;">負責：開發整個護理站系統</p>
+                                <p style="font-weight: bold;">1. 與工程師有效溝通，理解需求並提供解決方案</p>
+                                <p style="font-weight: bold;">2. 獨立解決問題能力，應對專案中的挑戰</p>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="topic" style="display: none;">
+                        <div class="row" style="margin-left: 100px;">
+                            <div class="col-md-6">
+                                <br>
+                                <div id="demo" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                                    <!-- Indicators/dots -->
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                                        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                                    </div>
+                                    <!-- The slideshow/carousel -->
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="images/7.jpg" alt="第一張" class="d-block custom-rounded" style="width:100%; height: 435px;">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/8.jpg" alt="第二張" class="d-block custom-rounded" style="width:100%; height: 435px;">
+                                        </div>
+                                    </div>
+                                    <!-- Left and right controls/icons -->
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon"></span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <br>
+                                <h3 style="font-weight: bold; color: rgb(179, 10, 10);">研海燈塔-THESIS</h3>
+                                <p style="font-weight: bold;">獲得大專院校資訊應用服務競賽-教育開放資料組(佳作)</p>
+                                <p style="font-weight: bold;">結合AI技術，提供流暢、直觀、高效的一體化學術寫作體驗</p>
+                                <p style="font-weight: bold;">資料蒐集到排版，集中所有功能於一平台</p>
+                                <p style="font-weight: bold;">圖中論文評分功能，主要以圖表呈現論文評分</p>
+                                <p style="font-weight: bold;">相似度分析和改進建議</p>
+                                <br>
+                                <p style="font-weight: bold;">負責：網頁美化及系統每個功能的整合</p>
+                                <p style="font-weight: bold;">讓功能之間不再是分離的，而是連結在一起的</p>
+                                <br>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="other" style="display: none;">
+                        <div class="row" style="margin-left: 100px;">
+                            <div class="col-md-6">
+                                <br>
+                                <div id="demo" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                                    <!-- Indicators/dots -->
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                                        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                                        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                                    </div>
+                                    <!-- The slideshow/carousel -->
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="images/9.jpg" alt="第一張" class="d-block custom-rounded" style="width:100%">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/10.jpg" alt="第二張" class="d-block custom-rounded" style="width:100%; height: 435px;">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/11.jpg" alt="第三張" class="d-block custom-rounded" style="width:100%; height: 435px;">
+                                        </div>
+                                    </div>
+                                    <!-- Left and right controls/icons -->
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon"></span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <br>
+                                <h3 style="font-weight: bold; color: rgb(179, 10, 10);">校內</h3>
+                                <p style="font-weight: bold;">參加聯合創意星，獲得評審特別獎</p>
+                                <p style="font-weight: bold;">考取ERP證照</p>
+                                <p style="font-weight: bold;">產學人才扎根分項計畫(團體組)-第三名</p>
+                                <h3 style="font-weight: bold; color: rgb(179, 10, 10);">校外</h3>
+                                <p style="font-weight: bold;">參與2024管理、商業與資訊國際學術研討會</p>
+                                <p style="font-weight: bold;">葡萄王企業訪談</p>
+                                <p style="font-weight: bold;">大專院校資訊應用服務競賽-教育開放資料組(佳作)</p>
+                                <p style="font-weight: bold;">與華星科技公司進行產學合作</p>
+                                <p style="font-weight: bold;">至幼安教養院擔任志工</p>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bt text-center">
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showIndustry()">產學</button>
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showTopic()">專題</button>
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showOther()">其他</button>
                 </div>
             </div>
         </div>
@@ -756,11 +1006,109 @@
                         <br><br>
                     </div>
                 </div>
+                <div class="juniorUp" style="display: none;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6" style="text-align: left;">
+                                <h3 class="offset-md-3" style="font-weight: bold;">大三上</h3>
+                                <p class="offset-md-3" style="font-weight: bold;">
+                                大三上修習系統分析，了解從需求分析到系統設計的<br>
+                                流程與重要性。<br>
+                                而大三也開始參與產學合作，協助合作的公司升級<br>
+                                Android應用API，開始自學Android Studio。<br>
+                                雖然初期因Java語法不熟遇到困難，但透過查資料<br>
+                                與請教同學，逐步建立基礎，學會迎接挑戰與持續學習。<br>
+                                </p>
+                            </div>
+                            <div class="col-md-6" style="text-align: left;">
+                                <br>
+                                <h5 style="font-weight: bold;">SA</h5>
+                                <div class="progress" style="height:30px">
+                                    <div id="progress10" class="progress-bar bg-info" style="width:0%; height:30px;">85%</div>
+                                </div>
+                                <br>
+                                <h5 style="font-weight: bold;">Android Studio</h5>
+                                <div class="progress" style="height:30px">
+                                    <div id="progress11" class="progress-bar bg-info" style="width:0%; height:30px;">25%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br><br>
+                    </div>
+                </div>    
+                <div class="juniorDown" style="display: none;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6" style="text-align: left;">
+                                <h3 class="offset-md-3" style="font-weight: bold;">大三下</h3>
+                                <p class="offset-md-3" style="font-weight: bold;">
+                                    大三下我修習 ERP 與軟體專案管理，學會資源整<br>
+                                    合與專案規劃，強化專題執行能力。<br>
+                                    <br>
+                                    同時持續鑽研Android，逐漸熟悉開發流程與常見<br>
+                                    問題，比大三上更能獨立解決錯誤，<br>
+                                    技術能力也明顯提升。
+                                </p>
+                            </div>
+                            <div class="col-md-6" style="text-align: left;">
+                                <br>
+                                <h5 style="font-weight: bold;">ERP</h5>
+                                <div class="progress" style="height:30px">
+                                    <div id="progress12" class="progress-bar bg-info" style="width:0%; height:30px;">95%</div>
+                                </div>
+                                <br>
+                                <h5 style="font-weight: bold;">軟體專案管理</h5>
+                                <div class="progress" style="height:30px">
+                                    <div id="progress13" class="progress-bar bg-info" style="width:0%; height:30px;">75%</div>
+                                </div>
+                                <br>
+                                <h5 style="font-weight: bold;">Android Studio</h5>
+                                <div class="progress" style="height:30px">
+                                    <div id="progress14" class="progress-bar bg-info" style="width:0%; height:30px;">60%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br><br>
+                    </div>
+                </div>
+                <div class="seniorUp" style="display: none;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6" style="text-align: left;">
+                                <h3 class="offset-md-3" style="font-weight: bold;">大四上</h3>
+                                <p class="offset-md-3" style="font-weight: bold;">
+                                    四上我修習管理資訊系統與 Python 程式設計，<br>
+                                    進一步理解資訊系統在企業中的應用，也提升資料<br>
+                                    處理與自動化能力。透過實作，我更熟悉程式邏輯<br>
+                                    與資料分析，為未來進一步學習AI與系統整合打下<br>
+                                    基礎。<br>
+                                    <br><br>
+                                </p>
+                            </div>
+                            <div class="col-md-6" style="text-align: left;">
+                                <br>
+                                <h5 style="font-weight: bold;">MIS</h5>
+                                <div class="progress" style="height:30px">
+                                    <div id="progress15" class="progress-bar bg-info" style="width:0%; height:30px;">70%</div>
+                                </div>
+                                <br>
+                                <h5 style="font-weight: bold;">Python</h5>
+                                <div class="progress" style="height:30px">
+                                    <div id="progress16" class="progress-bar bg-info" style="width:0%; height:30px;">65%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br><br>
+                    </div>
+                </div>
                 <div class="but text-center">
                     <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showfup()">一上</button>
                     <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showfdown()">一下</button>
                     <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showsup()">二上</button>
                     <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showsdown()">二下</button>
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showjup()">三上</button>
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showjdown()">三下</button>
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showsenup()">四上</button>
                 </div>
             </div>
         </div>
@@ -782,10 +1130,15 @@
                     <p style="font-weight: bold;">3. 大二下使用PHP所做的「<span style="color: #369661;">設備維修系統</span>」</p>
                     <iframe width="672" height="378" src="https://www.youtube.com/embed/vjEGz4wIrSc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
+                <div class="thesis" style="display: none;">
+                    <p style="font-weight: bold;">4. 專題「<span style="color: #369661;">研海燈塔-THESIS</span>」</p>
+                    <iframe width="672" height="378" src="https://www.youtube.com/embed/tMbL237XrwU?si=i4Y-gR4L-z1O0nOV" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
                 <div class="butn text-center">
                     <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showc()">C++</button>
                     <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showbcb()">BCB</button>
                     <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showphp()">PHP</button>
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showthesis()">PHP</button>
                 </div>
             </div>
         </div>
