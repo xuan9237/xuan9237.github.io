@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <title>U1033049</title>
+    <title>佳軒的窩</title>
     <link rel="icon" href="images/home.png" type="images/png">
 </head>
 
@@ -62,7 +62,7 @@
     }
 
     /*我的家人*/
-    .custom-card-img {
+    /* .custom-card-img {
         height: 350px;
         object-fit: cover;
     }
@@ -76,7 +76,7 @@
     .fade-in.show {
         opacity: 1;
         transform: translateX(0);
-    }
+    } */
 
     /*作品集*/
     #port.carousel {
@@ -84,9 +84,9 @@
     }
 
     /*教育背景*/
-    .custom-rounded {
+    /* .custom-rounded {
         border-radius: 5%;
-    }
+    } */
 
     /*專業技能*/
     .progress-bar {
@@ -97,35 +97,35 @@
 
 <script>
     /*我的家人*/
-    function handleIntersection(entries, observer) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCards(); // 滾動到"我的家人"部分時觸發一張一張出現的效果
-                observer.unobserve(entry.target);
-            }
-        });
-    }
+    // function handleIntersection(entries, observer) {
+    //     entries.forEach(entry => {
+    //         if (entry.isIntersecting) {
+    //             animateCards(); // 滾動到"我的家人"部分時觸發一張一張出現的效果
+    //             observer.unobserve(entry.target);
+    //         }
+    //     });
+    // }
 
-    function animateCards() {
-        const cards = document.querySelectorAll('.fade-in');
-        let delay = 0;
-        cards.forEach(function(card) {
-            setTimeout(function() {
-                card.classList.add('show');
-            }, delay);
-            delay += 400; // 延遲每張卡片的顯示時間
-        });
-    }
+    // function animateCards() {
+    //     const cards = document.querySelectorAll('.fade-in');
+    //     let delay = 0;
+    //     cards.forEach(function(card) {
+    //         setTimeout(function() {
+    //             card.classList.add('show');
+    //         }, delay);
+    //         delay += 400; // 延遲每張卡片的顯示時間
+    //     });
+    // }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const section = document.querySelector('#menu2'); // 修改為"我的家人"部分的ID
-        const options = {
-            rootMargin: '0px',
-            threshold: 0.5
-        };
-        const observer = new IntersectionObserver(handleIntersection, options);
-        observer.observe(section);
-    });
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     const section = document.querySelector('#menu2'); // 修改為"我的家人"部分的ID
+    //     const options = {
+    //         rootMargin: '0px',
+    //         threshold: 0.5
+    //     };
+    //     const observer = new IntersectionObserver(handleIntersection, options);
+    //     observer.observe(section);
+    // });
 
     /*我的經歷*/
     function showIndustry() {
@@ -147,33 +147,33 @@
     }
 
     /*教育背景*/
-    function showPrimary() {
-        document.querySelector('.primary').style.display = "block";
-        document.querySelector('.junior').style.display = "none";
-        document.querySelector('.senior').style.display = "none";
-        document.querySelector('.rightnow').style.display = "none";
-    }
+    // function showPrimary() {
+    //     document.querySelector('.primary').style.display = "block";
+    //     document.querySelector('.junior').style.display = "none";
+    //     document.querySelector('.senior').style.display = "none";
+    //     document.querySelector('.rightnow').style.display = "none";
+    // }
 
-    function showJunior() {
-        document.querySelector('.primary').style.display = "none";
-        document.querySelector('.junior').style.display = "block";
-        document.querySelector('.senior').style.display = "none";
-        document.querySelector('.rightnow').style.display = "none";
-    }
+    // function showJunior() {
+    //     document.querySelector('.primary').style.display = "none";
+    //     document.querySelector('.junior').style.display = "block";
+    //     document.querySelector('.senior').style.display = "none";
+    //     document.querySelector('.rightnow').style.display = "none";
+    // }
 
-    function showSenior() {
-        document.querySelector('.primary').style.display = "none";
-        document.querySelector('.junior').style.display = "none";
-        document.querySelector('.senior').style.display = "block";
-        document.querySelector('.rightnow').style.display = "none";
-    }
+    // function showSenior() {
+    //     document.querySelector('.primary').style.display = "none";
+    //     document.querySelector('.junior').style.display = "none";
+    //     document.querySelector('.senior').style.display = "block";
+    //     document.querySelector('.rightnow').style.display = "none";
+    // }
 
-    function showRightNow() {
-        document.querySelector('.primary').style.display = "none";
-        document.querySelector('.junior').style.display = "none";
-        document.querySelector('.senior').style.display = "none";
-        document.querySelector('.rightnow').style.display = "block";
-    }
+    // function showRightNow() {
+    //     document.querySelector('.primary').style.display = "none";
+    //     document.querySelector('.junior').style.display = "none";
+    //     document.querySelector('.senior').style.display = "none";
+    //     document.querySelector('.rightnow').style.display = "block";
+    // }
 
     /*專業技能*/
     function animateProgressBar(progressBar, targetWidth) {
@@ -348,15 +348,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#menu1">關於我</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#menu2" onclick="animateCards();">我的家人</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link" href="#menu3">我的經歷</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#menu4">教育背景</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link" href="#menu5">專業技能</a>
                         </li>
@@ -455,7 +455,7 @@
                 </div>
             </div>
         </div>
-        <div id="menu2" class="container-fluid" style="padding:100px 20px;">
+        <!-- <div id="menu2" class="container-fluid" style="padding:100px 20px;">
             <br>
             <h2 class="font-effect-shadow-multiple" style="font-weight: bold; color: #00364D;">我的家人</h2>
             <main>
@@ -522,7 +522,7 @@
                     </div>
                 </div>
             </main>
-        </div>    
+        </div>     -->
         <!-- <div id="menu3" class="container-fluid" style="padding:100px 20px;">
             <br>
             <h2 class="font-effect-shadow-multiple" style="font-weight: bold; color: #00364D;">作品集</h2>
@@ -580,7 +580,7 @@
                 </div>
             </div>
         </div>  -->
-        <div id="menu3" class="container-fluid" style="padding:100px 20px;">
+        <div id="menu3" class="container-fluid" style="padding:50px 20px;">
             <br>
             <h2 class="font-effect-shadow-multiple" style="font-weight: bold; color: #00364D;">我的經歷</h2>
             <div class="portfolio text-left" id="big">
@@ -738,7 +738,7 @@
                 </div>
             </div>
         </div>
-        <div id="menu4" class="container-fluid" style="padding:100px 20px;">
+        <!-- <div id="menu4" class="container-fluid" style="padding:100px 20px;">
             <br>
             <h2  class="font-effect-shadow-multiple" style="font-weight: bold; color: #00364D;">教育背景</h2>
             <div class="educate text-left" id="big">
@@ -820,14 +820,14 @@
                             <div class="col-md-6">
                                 <br>
                                 <div id="demo" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
-                                    <!-- Indicators/dots -->
-                                    <div class="carousel-indicators">
+                                    Indicators/dots -->
+                                    <!-- <div class="carousel-indicators">
                                         <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
                                         <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
                                         <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-                                    </div>
+                                    </div> -->
                                     <!-- The slideshow/carousel -->
-                                    <div class="carousel-inner">
+                                    <!-- <div class="carousel-inner">
                                         <div class="carousel-item active">
                                             <img src="images/1.jpg" alt="第一張" class="d-block custom-rounded" style="width:100%">
                                         </div>
@@ -837,9 +837,9 @@
                                         <div class="carousel-item">
                                             <img src="images/3.jpg" alt="第三張" class="d-block custom-rounded" style="width:100%">
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Left and right controls/icons -->
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                                    <!-- <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
                                         <span class="carousel-control-prev-icon"></span>
                                     </button>
                                     <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
@@ -871,7 +871,7 @@
                     <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showRightNow()">現在</button>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div id="menu5" class="container-fluid" style="padding:100px 20px;">
             <br>
             <h2  class="font-effect-shadow-multiple" style="font-weight: bold; color: #00364D;">專業技能</h2>
@@ -1112,7 +1112,7 @@
                 </div>
             </div>
         </div>
-        <div id="menu6" class="container-fluid" style="padding:100px 20px;">
+        <div id="menu6" class="container-fluid" style="padding:60px 20px;">
             <br>
             <h2  class="font-effect-shadow-multiple" style="font-weight: bold; color: #00364D;">專案作品</h2>
             <br>
@@ -1138,7 +1138,7 @@
                     <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showc()">C++</button>
                     <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showbcb()">BCB</button>
                     <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showphp()">PHP</button>
-                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showthesis()">專題</button>
+                    <button class="btn btn-outline-dark btn-lg" style="font-weight: bold;" onclick="showthesis()">PHP</button>
                 </div>
             </div>
         </div>
